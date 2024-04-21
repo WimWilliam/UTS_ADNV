@@ -6,7 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.RecyclerView
 import com.emp.uts_adnv.R
 import com.emp.uts_adnv.databinding.FragmentHobbyDetailBinding
 import com.emp.uts_adnv.viewmodel.DetailHobbyViewModel
@@ -18,8 +21,9 @@ import java.util.concurrent.TimeUnit
 
 class HobbyDetailFragment : Fragment() {
 
-    private lateinit var  detailHobbyViewModel: DetailHobbyViewModel
-    private lateinit var  binding: FragmentHobbyDetailBinding
+    private lateinit var  viewModel: DetailHobbyViewModel
+    private  val hobbyDetailAdapter = HobbyDetailAdapter(arrayListOf())
+
 
 
 
@@ -31,15 +35,13 @@ class HobbyDetailFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_hobby_detail, container, false)
     }
 
-//    fun observeViewModel() {
-//        detailHobbyViewModel.detailLD.observe(viewLifecycleOwner, Observer {
-//            var dHobby = it
-//            binding.btnNext?.setOnClickListener {
-//
-//            }
-//        })
-//
-//    }
+    fun observeViewModel(){
 
+        viewModel.detailLD.observe(viewLifecycleOwner, Observer {
+            hobbyDetailAdapter.updateHobbyDetail(it)
+        })
+
+
+    }
 
 }

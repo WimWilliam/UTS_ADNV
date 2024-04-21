@@ -3,6 +3,7 @@ package com.emp.uts_adnv.view
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -33,6 +34,7 @@ class HobbyDetailAdapter (val listBaca:ArrayList<DetailHobby>):
         val isiCeritaHobby = holder.view.findViewById<TextView>(R.id.txtisiBerita)
         val photo = holder.view.findViewById<TextView>(R.id.imageViewDetailHobby)
         val progresBar = holder.view.findViewById<ProgressBar>(R.id.progressBarListHoby)
+        val btnNext = holder.view.findViewById<Button>(R.id.btnNext)
 
         txtJudulHobby.setText(listBaca[position].nama)
         txtPenulisHobby.setText(listBaca[position].penulis)
@@ -43,7 +45,7 @@ class HobbyDetailAdapter (val listBaca:ArrayList<DetailHobby>):
 
 
     }
-    fun updateHobbyList(nDetailHobbyList: ArrayList<DetailHobby>) {
+    fun updateHobbyDetail(nDetailHobbyList: ArrayList<DetailHobby>) {
         listBaca.clear()
         listBaca.addAll(nDetailHobbyList)
         notifyDataSetChanged()
