@@ -42,35 +42,35 @@ class HobbyDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(DetailHobbyViewModel::class.java)
-        viewModel.refresh(it)
-
-        val recView = view.findViewById<RecyclerView>(R.id.recView)
-        recView.layoutManager = LinearLayoutManager(context)
-        recView.adapter = hobbyDetailAdapter
-
-        val refreshLayout = view.findViewById<SwipeRefreshLayout>(R.id.refreshLayout)
-        val txtEror = view.findViewById<TextView>(R.id.txtError)
-        val proggresBar = view.findViewById<ProgressBar>(R.id.progressBar2)
-
-        refreshLayout.setOnRefreshListener {
-            recView.visibility = View.GONE
-            txtEror.visibility = View.GONE
-            proggresBar.visibility = View.VISIBLE
-            viewModel.refresh(it)
-            refreshLayout.isRefreshing = false
-        }
-        observeViewModel()
-
-
-    }
-    fun observeViewModel(){
-
-        viewModel.detailLD.observe(viewLifecycleOwner, Observer {
-            hobbyDetailAdapter.updateHobbyDetail(it)
-        })
+//        viewModel = ViewModelProvider(this).get(DetailHobbyViewModel::class.java)
+//        viewModel.refresh(it)
+//
+//        val recView = view.findViewById<RecyclerView>(R.id.recView)
+//        recView.layoutManager = LinearLayoutManager(context)
+//        recView.adapter = hobbyDetailAdapter
+//
+//        val refreshLayout = view.findViewById<SwipeRefreshLayout>(R.id.refreshLayout)
+//        val txtEror = view.findViewById<TextView>(R.id.txtError)
+//        val proggresBar = view.findViewById<ProgressBar>(R.id.progressBar2)
+//
+//        refreshLayout.setOnRefreshListener {
+//            recView.visibility = View.GONE
+//            txtEror.visibility = View.GONE
+//            proggresBar.visibility = View.VISIBLE
+//            viewModel.refresh(it)
+//            refreshLayout.isRefreshing = false
+//        }
+//        observeViewModel()
 
 
     }
+//    fun observeViewModel(){
+//
+//        viewModel.detailLD.observe(viewLifecycleOwner, Observer {
+//            hobbyDetailAdapter.updateHobbyDetail(it)
+//        })
+//
+//
+//    }
 
 }
