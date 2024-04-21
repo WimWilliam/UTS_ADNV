@@ -32,8 +32,7 @@ class HobbyListFragment : Fragment() {
     }
 
     fun observeViewModel(){
-//        Log
-//        Log.d("test",hobbyListAdapter.toString())
+
         viewModel.hobbysLD.observe(viewLifecycleOwner, Observer {
             hobbyListAdapter.updateHobbyList(it)
         })
